@@ -3,10 +3,9 @@ package cn.com.tcsl.mvptest.service;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
-
-import com.jakewharton.rxbinding.view.RxView;
 
 import cn.com.tcsl.mvptest.interfaces.ProgressCancelListener;
 
@@ -42,6 +41,17 @@ public class ProgressDialogHandler extends Handler {
     }
 
     /**
+     * 关闭dialog
+     */
+    private void dismissProgressDialog() {
+        if(pd!=null){
+            pd.dismiss();
+            pd=null;
+        }
+
+    }
+
+    /**
      * 显示dialog
      */
     private void initProgressDialog() {
@@ -49,7 +59,15 @@ public class ProgressDialogHandler extends Handler {
             pd=new ProgressDialog(mContext);
             pd.setCancelable(cancelable);
             if(cancelable){
-                rx.clicks(pd).
+                pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        mListener.onCancelProgress();
+                    }
+                });
+            }
+            if (!pd.isShowing()) {
+                pd.show();
             }
         }
     }
