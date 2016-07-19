@@ -1,8 +1,8 @@
-package cn.com.tcsl.mvptest.activity;
+package cn.com.tcsl.mvptest.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,11 +14,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.com.tcsl.mvptest.R;
+import cn.com.tcsl.mvptest.activity.MainActivity;
+import cn.com.tcsl.mvptest.base.BaseActivity;
 
 /**
  * Created by wjx on 2016/7/15.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.iv_cancel)
     ImageView ivCancel;
     @BindView(R.id.tv_phone)
@@ -35,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     @BindView(R.id.btn_regist)
     Button btnRegist;
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,5 +58,31 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.btn_regist:
                 break;
         }
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showError(String error) {
+
+    }
+
+    @Override
+    public void navigateToMain() {
+        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void navigateToRegister() {
+
     }
 }
