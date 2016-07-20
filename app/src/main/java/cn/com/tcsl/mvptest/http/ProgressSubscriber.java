@@ -1,14 +1,15 @@
-package cn.com.tcsl.mvptest.base;
+package cn.com.tcsl.mvptest.http;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import cn.com.tcsl.mvptest.interfaces.ProgressCancelListener;
-import cn.com.tcsl.mvptest.interfaces.SubscriberOnNextListener;
+import cn.com.tcsl.mvptest.http.interfaces.ProgressCancelListener;
+import cn.com.tcsl.mvptest.http.interfaces.SubscriberOnNextListener;
 import cn.com.tcsl.mvptest.service.ProgressDialogHandler;
 import rx.Subscriber;
 
 /**
+ * 带有进度条的网络请求
  * Created by wu on 2016/7/20.
  */
 public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCancelListener {

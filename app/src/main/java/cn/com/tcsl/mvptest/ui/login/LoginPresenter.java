@@ -2,11 +2,11 @@ package cn.com.tcsl.mvptest.ui.login;
 
 import android.content.Context;
 
-import cn.com.tcsl.mvptest.base.ProgressSubscriber;
+import cn.com.tcsl.mvptest.http.ProgressSubscriber;
 import cn.com.tcsl.mvptest.http.HttpMethods;
-import cn.com.tcsl.mvptest.http.model.Login;
-import cn.com.tcsl.mvptest.http.model.LoginRequest;
-import cn.com.tcsl.mvptest.interfaces.SubscriberOnNextListener;
+import cn.com.tcsl.mvptest.bean.Login;
+import cn.com.tcsl.mvptest.bean.LoginRequest;
+import cn.com.tcsl.mvptest.http.interfaces.SubscriberOnNextListener;
 
 /**
  * Created by wjx on 2016/7/19.

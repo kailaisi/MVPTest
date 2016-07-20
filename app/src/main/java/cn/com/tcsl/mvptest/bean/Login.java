@@ -1,4 +1,4 @@
-package cn.com.tcsl.mvptest.http.model;
+package cn.com.tcsl.mvptest.bean;
 /**
  * 登录返回信息实体
  */

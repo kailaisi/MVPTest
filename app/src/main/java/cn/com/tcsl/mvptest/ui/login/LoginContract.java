@@ -3,7 +3,7 @@ package cn.com.tcsl.mvptest.ui.login;
 import cn.com.tcsl.mvptest.base.BasePresenter;
 import cn.com.tcsl.mvptest.base.BaseView;
 import cn.com.tcsl.mvptest.bean.User;
-import cn.com.tcsl.mvptest.http.model.LoginRequest;
+import cn.com.tcsl.mvptest.bean.LoginRequest;
 
 /**
  * Created by wjx on 2016/7/15.

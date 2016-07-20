@@ -4,17 +4,17 @@ import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 
-import cn.com.tcsl.mvptest.http.model.Login;
-import cn.com.tcsl.mvptest.http.model.LoginRequest;
+import cn.com.tcsl.mvptest.bean.Login;
+import cn.com.tcsl.mvptest.bean.LoginRequest;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -72,6 +72,4 @@ public class HttpMethods {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-
-
 }

@@ -2,14 +2,13 @@ package cn.com.tcsl.mvptest.service;
 
 
 import android.app.Activity;
-import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 
-import cn.com.tcsl.mvptest.interfaces.ProgressCancelListener;
+import cn.com.tcsl.mvptest.http.interfaces.ProgressCancelListener;
 
 /**
  * Created by wjx on 2016/7/19.
