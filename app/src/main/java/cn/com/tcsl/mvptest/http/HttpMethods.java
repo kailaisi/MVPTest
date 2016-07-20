@@ -26,10 +26,11 @@ public class HttpMethods {
     Retrofit retrofit;
     RequestService requestService;
     /**
-     * okhttp拦截器
+     * okhttp打印数据拦截器
      */
     private static OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor
             (new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build();
+    private static DownloadProgressInterceptor downloadProgressInterceptor;
     /**
      * 连接超时时间
      */
@@ -60,6 +61,11 @@ public class HttpMethods {
         Observable<Login> observable=requestService.userLogin(new Gson().toJson(request));
         toSubcriber(subscriber, observable);
     }
+
+    public void downLoad()
+
+
+
 
     /**
      * 添加线程管理并订阅

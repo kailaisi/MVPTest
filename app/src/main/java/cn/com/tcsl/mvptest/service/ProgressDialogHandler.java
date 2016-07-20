@@ -11,6 +11,7 @@ import android.os.Message;
 import cn.com.tcsl.mvptest.http.interfaces.ProgressCancelListener;
 
 /**
+ * 显示圆圈的进度条
  * Created by wjx on 2016/7/19.
  */
 public class ProgressDialogHandler extends Handler {
