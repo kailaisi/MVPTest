@@ -1,6 +1,8 @@
 package cn.com.tcsl.mvptest.service;
 
 
+import android.app.Activity;
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,12 +20,14 @@ public class ProgressDialogHandler extends Handler {
 
     private ProgressDialog pd;
     private Context mContext;
+    private Activity context;
     private ProgressCancelListener mListener;
     private boolean cancelable;
 
     public ProgressDialogHandler(Context mContext, ProgressCancelListener mListener, boolean cancelable) {
         super();
         this.mContext = mContext;
+        this.context= (Activity) mContext;
         this.mListener = mListener;
         this.cancelable = cancelable;
     }
@@ -55,8 +59,8 @@ public class ProgressDialogHandler extends Handler {
      * 显示dialog
      */
     private void initProgressDialog() {
-        if(pd==null){
-            pd=new ProgressDialog(mContext);
+        if(pd==null && context.isFinishing()){
+            pd=new ProgressDialog(context);
             pd.setCancelable(cancelable);
             if(cancelable){
                 pd.setOnCancelListener(new DialogInterface.OnCancelListener() {

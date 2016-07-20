@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.com.tcsl.mvptest.R;
-import cn.com.tcsl.mvptest.activity.MainActivity;
+import cn.com.tcsl.mvptest.ui.main.MainActivity;
 import cn.com.tcsl.mvptest.base.BaseActivity;
 
 /**
@@ -37,9 +37,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     Button btnLogin;
     @BindView(R.id.btn_regist)
     Button btnRegist;
-
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
