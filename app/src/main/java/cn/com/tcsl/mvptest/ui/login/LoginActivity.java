@@ -15,12 +15,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.com.tcsl.mvptest.R;
 import cn.com.tcsl.mvptest.base.BaseActivity;
+import cn.com.tcsl.mvptest.bean.LoginRequest;
 import cn.com.tcsl.mvptest.ui.main.MainActivity;
 
 /**
  * Created by wjx on 2016/7/15.
  */
-public class LoginActivity extends BaseActivity implements LoginContract.View {
+public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract.View {
+
     @BindView(R.id.iv_cancel)
     ImageView ivCancel;
     @BindView(R.id.tv_phone)
@@ -38,14 +40,15 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.btn_regist)
     Button btnRegist;
 
-    private LoginContract.Presenter loginPresenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        loginPresenter=new LoginPresenter(this);
+        mPresenter = new LoginPresenter(this);
+        mPresenter.start();
     }
+
 
     @OnClick({R.id.cb_remember, R.id.btn_login, R.id.btn_regist})
     public void onClick(View view) {
@@ -53,7 +56,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             case R.id.cb_remember:
                 break;
             case R.id.btn_login:
-                loginPresenter.login();
+                LoginRequest request = new LoginRequest("GBLHPLD", "1314", "123456789");
+                mPresenter.login(request);
                 break;
             case R.id.btn_regist:
                 break;
@@ -85,4 +89,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void navigateToRegister() {
 
     }
+
+
 }

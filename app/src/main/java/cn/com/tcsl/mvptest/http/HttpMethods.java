@@ -28,8 +28,7 @@ public class HttpMethods {
     /**
      * okhttp打印数据拦截器
      */
-    private static OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor
-            (new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build();
+    private static OkHttpClient okHttpClient;
     private static DownloadProgressInterceptor downloadProgressInterceptor;
     /**
      * 连接超时时间
@@ -41,6 +40,8 @@ public class HttpMethods {
     }
 
     private HttpMethods() {
+        okHttpClient = new OkHttpClient.Builder().addInterceptor
+                (new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build();
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(default_timeout, TimeUnit.SECONDS);
         retrofit = new Retrofit.Builder().client(builder.build())
@@ -61,8 +62,6 @@ public class HttpMethods {
         Observable<Login> observable=requestService.userLogin(new Gson().toJson(request));
         toSubcriber(subscriber, observable);
     }
-
-    public void downLoad()
 
 
 

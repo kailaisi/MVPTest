@@ -34,6 +34,11 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
+    public void start() {
+
+    }
+
+    @Override
     public void onDestroy() {
 
     }

@@ -15,6 +15,12 @@ public class LoginRequest
     private String mcPWD;
     private String pcCode;
 
+    public LoginRequest(String mcCode, String mcPWD, String pcCode) {
+        this.mcCode = mcCode;
+        this.mcPWD = mcPWD;
+        this.pcCode = pcCode;
+    }
+
     public String getMcCode() {
         return mcCode;
     }
