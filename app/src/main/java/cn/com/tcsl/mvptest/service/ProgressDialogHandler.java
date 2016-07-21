@@ -59,7 +59,7 @@ public class ProgressDialogHandler extends Handler {
      * 显示dialog
      */
     private void initProgressDialog() {
-        if(pd==null && context.isFinishing()){
+        if(pd==null && !context.isFinishing()){
             pd=new ProgressDialog(context);
             pd.setCancelable(cancelable);
             if(cancelable){
