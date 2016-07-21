@@ -1,4 +1,4 @@
-package cn.com.tcsl.mvptest.activity;
+package cn.com.tcsl.mvptest.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

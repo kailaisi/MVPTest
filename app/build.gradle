@@ -2,7 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "24.0.0" +
+            ""
 
     defaultConfig {
         applicationId "cn.com.tcsl.mvptest"
@@ -36,4 +37,6 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
     compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.3.0'
     compile 'com.jakewharton.rxbinding:rxbinding-design:0.3.0'
+
+    compile 'com.daimajia.numberprogressbar:library:1.2@aar'
 }

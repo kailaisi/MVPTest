@@ -2,7 +2,8 @@ package cn.com.tcsl.mvptest.http;
 
 
 
-import cn.com.tcsl.mvptest.http.model.Login;
+import cn.com.tcsl.mvptest.bean.Login;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -14,6 +15,6 @@ import rx.Observable;
 public interface RequestService {
     @GET("MerchantLogin.htm")
     Observable<Login> userLogin(@Query("data") String data);
-
-
+@GET
+    Observable<ResponseBody> downLoad();
 }

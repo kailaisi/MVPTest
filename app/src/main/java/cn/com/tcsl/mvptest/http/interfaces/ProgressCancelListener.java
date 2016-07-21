@@ -1,4 +1,4 @@
-package cn.com.tcsl.mvptest.interfaces;
+package cn.com.tcsl.mvptest.http.interfaces;
 
 /**
  * progress的取消接口

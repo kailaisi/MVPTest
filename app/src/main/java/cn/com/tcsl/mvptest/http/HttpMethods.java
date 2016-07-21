@@ -4,17 +4,17 @@ import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 
-import cn.com.tcsl.mvptest.http.model.Login;
-import cn.com.tcsl.mvptest.http.model.LoginRequest;
+import cn.com.tcsl.mvptest.bean.Login;
+import cn.com.tcsl.mvptest.bean.LoginRequest;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -26,10 +26,11 @@ public class HttpMethods {
     Retrofit retrofit;
     RequestService requestService;
     /**
-     * okhttp拦截器
+     * okhttp打印数据拦截器
      */
     private static OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor
             (new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build();
+    private static DownloadProgressInterceptor downloadProgressInterceptor;
     /**
      * 连接超时时间
      */
@@ -61,6 +62,11 @@ public class HttpMethods {
         toSubcriber(subscriber, observable);
     }
 
+    public void downLoad()
+
+
+
+
     /**
      * 添加线程管理并订阅
      * @param subscriber 观察者
@@ -72,6 +78,4 @@ public class HttpMethods {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-
-
 }

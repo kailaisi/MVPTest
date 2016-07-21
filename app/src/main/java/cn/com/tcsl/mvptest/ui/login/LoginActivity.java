@@ -6,16 +6,16 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.com.tcsl.mvptest.R;
-import cn.com.tcsl.mvptest.activity.MainActivity;
 import cn.com.tcsl.mvptest.base.BaseActivity;
+import cn.com.tcsl.mvptest.ui.main.MainActivity;
 
 /**
  * Created by wjx on 2016/7/15.
@@ -24,9 +24,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.iv_cancel)
     ImageView ivCancel;
     @BindView(R.id.tv_phone)
-    TextView tvPhone;
+    EditText tvPhone;
     @BindView(R.id.tv_password)
-    TextView tvPassword;
+    EditText tvPassword;
     @BindView(R.id.cb_remember)
     CheckBox cbRemember;
     @BindView(R.id.linearlayout)
@@ -38,14 +38,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.btn_regist)
     Button btnRegist;
 
-
-
-
+    private LoginContract.Presenter loginPresenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        loginPresenter=new LoginPresenter(this);
     }
 
     @OnClick({R.id.cb_remember, R.id.btn_login, R.id.btn_regist})
@@ -54,6 +53,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             case R.id.cb_remember:
                 break;
             case R.id.btn_login:
+                loginPresenter.login();
                 break;
             case R.id.btn_regist:
                 break;
@@ -77,7 +77,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void navigateToMain() {
-        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
 

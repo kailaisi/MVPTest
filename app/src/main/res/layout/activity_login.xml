@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/large_top_margin" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:maxLength="11"
             android:padding="@dimen/common_container_padding" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

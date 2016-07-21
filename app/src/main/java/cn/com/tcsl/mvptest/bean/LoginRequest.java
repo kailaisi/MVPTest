@@ -1,4 +1,4 @@
-package cn.com.tcsl.mvptest.http.model;
+package cn.com.tcsl.mvptest.bean;
 
 /**
  * Created by wjx on 2016/7/19.
