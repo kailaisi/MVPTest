@@ -26,6 +26,7 @@ public interface LoginContract {
     }
     interface Presenter extends BasePresenter {
         void login(LoginRequest loginRequest);
+        void regist();
     }
     interface Model{
         void saveUserInfo(User user);

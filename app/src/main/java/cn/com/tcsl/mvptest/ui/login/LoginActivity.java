@@ -16,6 +16,7 @@ import butterknife.OnClick;
 import cn.com.tcsl.mvptest.R;
 import cn.com.tcsl.mvptest.base.BaseActivity;
 import cn.com.tcsl.mvptest.bean.LoginRequest;
+import cn.com.tcsl.mvptest.ui.down.DownActivity;
 import cn.com.tcsl.mvptest.ui.main.MainActivity;
 
 /**
@@ -60,6 +61,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 mPresenter.login(request);
                 break;
             case R.id.btn_regist:
+                mPresenter.regist();
                 break;
         }
     }
@@ -87,7 +89,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void navigateToRegister() {
-
+        Intent intent = new Intent(LoginActivity.this, DownActivity.class);
+        startActivity(intent);
     }
 
 

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import cn.com.tcsl.mvptest.http.interfaces.ProgressCancelListener;
 
@@ -17,7 +18,6 @@ import cn.com.tcsl.mvptest.http.interfaces.ProgressCancelListener;
 public class ProgressDialogHandler extends Handler {
     public static final int SHOW_PROGRESS_DIALOG = 1;
     public static final int DISMISS_PROGRESS_DIALOG = 2;
-
     private ProgressDialog pd;
     private Context mContext;
     private Activity context;
