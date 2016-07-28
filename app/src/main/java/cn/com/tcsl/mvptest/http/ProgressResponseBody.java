@@ -12,6 +12,7 @@ import okio.Okio;
 import okio.Source;
 
 /**
+ * 返回的实体
  * Created by wu on 2016/7/20.
  */
 public class ProgressResponseBody extends ResponseBody {

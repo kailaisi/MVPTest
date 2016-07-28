@@ -24,7 +24,6 @@ public class DownProgressDialog  extends ProgressDialog{
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         setCancelable(false);
-       setContentView(android.R.layout.);
     }
 
     @Override
