@@ -3,6 +3,10 @@ package cn.com.tcsl.mvptest.http;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+
+import cn.com.tcsl.mvptest.http.Utils.Constant;
 import cn.com.tcsl.mvptest.http.interfaces.ProgressCancelListener;
 import cn.com.tcsl.mvptest.http.interfaces.SubscriberOnNextListener;
 import cn.com.tcsl.mvptest.service.ProgressDialogHandler;
@@ -45,6 +49,17 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     public void onError(Throwable e) {
         dismissProgressDialog();
         Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+        if(mListener!=null) {
+            if (e instanceof SocketTimeoutException) {
+                    mListener.onError("网络错误,，请检测网络状态", Constant.NETERROR);
+            } else if (e instanceof ConnectException) {
+                mListener.onError("网络错误,，请检测网络状态", Constant.NETERROR);
+            }else if(e instanceof APIException){
+                mListener.onError(((APIException)e).getMessage(),((APIException)e).getCode());
+            }else {
+                mListener.onError(e.getMessage(),Constant.UNKONWERROR);
+            }
+        }
     }
 
     @Override

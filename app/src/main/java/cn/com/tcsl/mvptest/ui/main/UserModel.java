@@ -1,9 +1,10 @@
-package cn.com.tcsl.mvptest.model;
+package cn.com.tcsl.mvptest.ui.main;
 
 
 import android.util.SparseArray;
 
 import cn.com.tcsl.mvptest.bean.UserBean;
+import cn.com.tcsl.mvptest.ui.main.IUserModel;
 
 public class UserModel implements IUserModel {
 

@@ -1,11 +1,8 @@
 package cn.com.tcsl.mvptest.ui.down;
 
-import android.content.Intent;
-import android.net.Uri;
-
 import java.io.File;
 
-import cn.com.tcsl.mvptest.http.HttpMethods;
+import cn.com.tcsl.mvptest.http.RetrofitHttpUtils;
 import cn.com.tcsl.mvptest.http.interfaces.DownProgressListener;
 import okhttp3.ResponseBody;
 import rx.Subscriber;
@@ -50,7 +47,7 @@ public class DownPresenter implements DownContract.Presenter {
                 view.intallAPK(file);
             }
         };
-        HttpMethods.getDownInstance(mListeren).downLoad(subscriber,"http://hengdawb-app.oss-cn-hangzhou.aliyuncs.com/app-debug.apk");
+        RetrofitHttpUtils.getDownInstance(mListeren).downLoad(subscriber,"http://hengdawb-app.oss-cn-hangzhou.aliyuncs.com/app-debug.apk");
     }
 
 

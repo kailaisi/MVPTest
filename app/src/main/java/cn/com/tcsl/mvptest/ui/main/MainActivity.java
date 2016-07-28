@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import cn.com.tcsl.mvptest.R;
 import cn.com.tcsl.mvptest.View.IUserView;
-import cn.com.tcsl.mvptest.presenter.UserPresenter;
 
 public class MainActivity extends AppCompatActivity implements IUserView {
     private EditText mEtId;

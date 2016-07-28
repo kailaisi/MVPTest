@@ -6,11 +6,11 @@ package cn.com.tcsl.mvptest.http;
  */
 public class HttpResult<T> {
     /**
-     *
+     *返回值信息
      */
     private String msg;
     /**
-     *
+     *请求返回码
      */
     private int resltCode;
     /**

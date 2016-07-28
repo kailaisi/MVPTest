@@ -13,7 +13,7 @@ public class  HttpReslutFunc<T> implements Func1<HttpResult<T>,T>{
         if(result.getResltCode()==2000){
             return result.getData();
         }else{
-            return null;
+            throw new APIException(result.getMsg(),result.getResltCode());
         }
 
     }

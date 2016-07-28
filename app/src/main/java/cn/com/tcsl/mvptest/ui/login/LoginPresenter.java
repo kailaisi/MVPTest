@@ -3,7 +3,7 @@ package cn.com.tcsl.mvptest.ui.login;
 import android.content.Context;
 
 import cn.com.tcsl.mvptest.http.ProgressSubscriber;
-import cn.com.tcsl.mvptest.http.HttpMethods;
+import cn.com.tcsl.mvptest.http.RetrofitHttpUtils;
 import cn.com.tcsl.mvptest.bean.Login;
 import cn.com.tcsl.mvptest.bean.LoginRequest;
 import cn.com.tcsl.mvptest.http.interfaces.SubscriberOnNextListener;
@@ -29,8 +29,13 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void onNext(Login login) {
                 mView.navigateToMain();
             }
+
+            @Override
+            public void onError(String msg, int errorCode) {
+
+            }
         };
-        HttpMethods.getInstance().getLogin(new ProgressSubscriber<Login>(listener, mContext,false),request);
+        RetrofitHttpUtils.getInstance().getLogin(new ProgressSubscriber<Login>(listener, mContext,false),request);
     }
 
     @Override

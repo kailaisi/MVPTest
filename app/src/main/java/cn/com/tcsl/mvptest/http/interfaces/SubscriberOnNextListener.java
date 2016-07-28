@@ -6,4 +6,11 @@ package cn.com.tcsl.mvptest.http.interfaces;
  */
 public interface SubscriberOnNextListener<T> {
     void onNext(T t);
+
+    /**
+     * 错误回调
+     * @param msg 错误信息
+     * @param errorCode 错误码
+     */
+    void onError(String msg,int errorCode);
 }

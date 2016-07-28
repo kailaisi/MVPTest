@@ -1,9 +1,7 @@
-package cn.com.tcsl.mvptest.presenter;
+package cn.com.tcsl.mvptest.ui.main;
 
 import cn.com.tcsl.mvptest.View.IUserView;
 import cn.com.tcsl.mvptest.bean.UserBean;
-import cn.com.tcsl.mvptest.model.IUserModel;
-import cn.com.tcsl.mvptest.model.UserModel;
 
 /**
  * Created by Administrator on 2016/7/1 0001.

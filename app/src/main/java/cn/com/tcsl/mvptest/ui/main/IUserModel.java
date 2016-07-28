@@ -1,4 +1,4 @@
-package cn.com.tcsl.mvptest.model;
+package cn.com.tcsl.mvptest.ui.main;
 
 import cn.com.tcsl.mvptest.bean.UserBean;
 
