@@ -1,7 +1,5 @@
 package cn.com.tcsl.mvptest.http;
 
-import android.webkit.DownloadListener;
-
 import java.io.IOException;
 
 import cn.com.tcsl.mvptest.http.interfaces.DownProgressListener;

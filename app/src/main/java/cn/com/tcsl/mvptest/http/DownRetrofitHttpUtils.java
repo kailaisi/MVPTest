@@ -29,9 +29,9 @@ import rx.schedulers.Schedulers;
  * retrofit网络请求工具类，封装了retrofit的初始化等相关方法
  * Created by wjx on 2016/7/19.
  */
-public class RetrofitHttpUtils {
-    private static RetrofitHttpUtils ourInstance = new RetrofitHttpUtils();
-    private static RetrofitHttpUtils downInstance;
+public class DownRetrofitHttpUtils {
+    private static DownRetrofitHttpUtils ourInstance = new DownRetrofitHttpUtils();
+    private static DownRetrofitHttpUtils downInstance;
     private final String baseUrl = "http://cs.wuuxiang.com:666/api/";
     private static Retrofit retrofit;
     public RequestService requestService;
@@ -39,6 +39,7 @@ public class RetrofitHttpUtils {
      * okhttp打印数据拦截器
      */
     private static OkHttpClient okHttpClient;
+    private static DownloadProgressInterceptor downloadProgressInterceptor;
     /**
      * 连接超时时间
      */
@@ -47,15 +48,28 @@ public class RetrofitHttpUtils {
     private boolean isUseCache;
     private int maxCacheTime=60;
 
-    public static RetrofitHttpUtils getInstance() {
+    public static DownRetrofitHttpUtils getInstance() {
         return ourInstance;
     }
+
+    /**
+     * 提供下载的单例模式，需要传入下载进度监听的回调
+     *
+     * @param listener
+     * @return
+     */
+    public static DownRetrofitHttpUtils getDownInstance(DownProgressListener listener) {
+        downInstance = new DownRetrofitHttpUtils(listener);
+        return downInstance;
+    }
+
+
     /**
      * 带下载上传进度回调的构造函数
      *
      * @param listener 回调接口
      */
-    public RetrofitHttpUtils(DownProgressListener listener) {
+    public DownRetrofitHttpUtils(DownProgressListener listener) {
         downloadProgressInterceptor = new DownloadProgressInterceptor(listener);
         okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -75,8 +89,7 @@ public class RetrofitHttpUtils {
     /**
      * 普通的网络请求
      */
-    public RetrofitHttpUtils() {
-        init();
+    public DownRetrofitHttpUtils() {
         okHttpClient = new OkHttpClient.Builder().addInterceptor
                 (new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build();
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -88,6 +101,17 @@ public class RetrofitHttpUtils {
                 .client(okHttpClient)
                 .build();
         requestService = retrofit.create(RequestService.class);
+    }
+
+
+
+
+
+    public RequestService getRequestService(){
+        if(requestService==null && retrofit!=null){
+            requestService=retrofit.create(RequestService.class);
+        }
+        return requestService;
     }
 
     public void init(Context context){
@@ -165,7 +189,12 @@ public class RetrofitHttpUtils {
      */
     public void toSubcriber(Subscriber subscriber, Observable observable) {
         observable.subscribeOn(Schedulers.io())
-                .map(new HttpReslutFunc())
+                .all(new Func1() {
+                    @Override
+                    public Object call(Object o) {
+                        return null;
+                    }
+                })
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

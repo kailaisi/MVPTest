@@ -7,6 +7,7 @@ import cn.com.tcsl.mvptest.http.RetrofitHttpUtils;
 import cn.com.tcsl.mvptest.bean.Login;
 import cn.com.tcsl.mvptest.bean.LoginRequest;
 import cn.com.tcsl.mvptest.http.interfaces.SubscriberOnNextListener;
+import cn.com.tcsl.mvptest.ui.APIFactory;
 
 /**
  * Created by wjx on 2016/7/19.
@@ -35,7 +36,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
             }
         };
-        RetrofitHttpUtils.getInstance().getLogin(new ProgressSubscriber<Login>(listener, mContext,false),request);
+       APIFactory.getInstance().getLogin(new ProgressSubscriber<Login>(listener, mContext,false),request);
     }
 
     @Override
